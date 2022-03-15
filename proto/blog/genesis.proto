@@ -1,0 +1,20 @@
+syntax = "proto3";
+package example.blog.blog;
+
+import "gogoproto/gogo.proto";
+import "blog/params.proto";
+import "blog/comment.proto";
+import "blog/post.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/example/blog/x/blog/types";
+
+// GenesisState defines the blog module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated Comment commentList = 2 [(gogoproto.nullable) = false];
+  uint64 commentCount = 3;
+  repeated Post postList = 4 [(gogoproto.nullable) = false];
+  uint64 postCount = 5;
+  // this line is used by starport scaffolding # genesis/proto/state
+}
